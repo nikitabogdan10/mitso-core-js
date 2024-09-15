@@ -284,8 +284,12 @@ function isString(value) {
  *   'Q♠' => 50
  *   'K♠' => 51
  */
-function getCardId(/* value */) {
-  throw new Error('Not implemented');
+function getCardId(value) {
+  const suits = ['♣', '♦', '♥', '♠'];
+  const ranks = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K'];
+  const suit = value.charAt(value.length - 1);
+  const rank = value.substring(0, value.length - 1);
+  return suits.indexOf(suit) * ranks.length + ranks.indexOf(rank);
 }
 
 module.exports = {
